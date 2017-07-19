@@ -28,7 +28,8 @@ namespace WpfApplication1
             get { return this.repeatCount; }
             set
             {
-                if (!int.TryParse(value, out int result))
+                int result;
+                if (!int.TryParse(value, out result))
                 {
                     return; 
                 };
