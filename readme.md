@@ -1,5 +1,7 @@
 # ＷＰＦ パフォーマンス測定プロジェクト
 
+[![Build status](https://ci.appveyor.com/api/projects/status/uk5ywhvy81lvrmm9/branch/master?svg=true)](https://ci.appveyor.com/project/MakotoUwaya/wpfperformancemeasurement/branch/master)
+
 ## はじめに
 これは、パフォーマンスに関する基準値を測定するためのプロジェクトです。
 
