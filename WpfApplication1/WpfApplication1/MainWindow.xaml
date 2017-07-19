@@ -5,12 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="バックグラウンド スレッドで UI 要素を作るとメモリリークする (WPF)" Height="700" Width="1050">
+
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+
     <Grid>
-        <ListView x:Name="lvSample">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="9*" />
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0">
+            <TextBlock  DockPanel.Dock="Left" Text="{Binding TotalMemory, Mode=OneWay}" Margin="5" />
+            <Button DockPanel.Dock="Right" Content="Not Leak" Command="{Binding NiceWork, Mode=OneTime}" VerticalAlignment="Center" Margin="5,0" />
+            <Button DockPanel.Dock="Right" Content="MemoryLeak" Command="{Binding DoWork, Mode=OneTime}" VerticalAlignment="Center" Margin="5,0" />
+            <TextBox DockPanel.Dock="Right" Text="{Binding RepeatCount, Mode=TwoWay}" Width="50" VerticalAlignment="Center" Margin="5,0" />
+            <TextBlock  DockPanel.Dock="Right" Text="繰り返し回数" VerticalAlignment="Center" Margin="5,0" />
+            <TextBlock />
+        </DockPanel>
+        
+        <ListView Grid.Row="1" ItemsSource="{Binding ListItemData, Mode=OneWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding Name}" />
+                    <Label Content="{Binding Name, Mode=OneTime}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
