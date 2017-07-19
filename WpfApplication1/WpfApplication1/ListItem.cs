@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WpfApplication1
+﻿namespace WpfApplication1
 {
     public class ListItem
     {
@@ -12,8 +6,8 @@ namespace WpfApplication1
 
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get { return this.name; }
+            set { this.name = value; }
         }
 
     }
